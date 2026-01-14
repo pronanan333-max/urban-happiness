@@ -1,0 +1,2 @@
+wed: web: gunicorn subplatform.wsgi:application --bind 0.0.0.0:$PORT
+wed: python manage.py migrate && gunicorn subplatform.wsg
