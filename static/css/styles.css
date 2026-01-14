@@ -1,0 +1,16 @@
+
+
+body {
+    background-color: #f2f3f5; /* เทาอ่อน ถนอมสายตา */
+    overflow-x: hidden;
+
+}
+
+.form-layout {
+    width: 500px;
+    border-radius: 20px;
+    background: #fafafa; /* ขาวหม่น */
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* เงาอ่อนๆ */
+    color: #333; /* สีตัวอักษรอ่านง่าย */
+}

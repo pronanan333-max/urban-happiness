@@ -1,0 +1,59 @@
+{% extends 'client/navbar.html' %}
+{% block content %}
+
+<!-- 🔍 Filter Form -->
+<div class="container bg-white shadow-md p-4 mt-4 rounded">
+  <form class="row g-3" method="get" action="{% url 'client-dashboard' %}">
+
+    <div class="col-md-3">
+      <input type="text" class="form-control w-100" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    </div>
+
+    <div class="col-md-3">
+      <input class="form-control w-100" list="location-list" name="location" placeholder="Location..." value="{{ request.GET.location }}">
+      <datalist id="location-list">
+        {% for loc in all_locations %}
+          <option value="{{ loc }}">
+        {% endfor %}
+      </datalist>
+    </div>
+
+    <div class="col-md-2">
+      <input type="number" class="form-control w-100" name="min_price" placeholder="Min Price" value="{{ request.GET.min_price }}">
+    </div>
+
+    <div class="col-md-2">
+      <input type="number" class="form-control w-100" name="max_price" placeholder="Max Price" value="{{ request.GET.max_price }}">
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+    </div>
+
+  </form>
+</div>
+
+
+
+<!-- 🧾 Article Grid -->
+<div class="container bg-white shadow-md p-4 mt-4 rounded">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for article in AllClientArticles %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          {% if article.image %}
+          <img src="{{ article.image.url }}" class="card-img-top" style="object-fit: cover; height: 200px;">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text"><strong>Location:</strong> {{ article.location }}</p>
+            <p class="card-text"><strong>Price:</strong> {{ article.price }} THB</p>
+            <a href="{% url 'client-article-detail' article.id %}" class="btn btn-outline-primary btn-sm w-100">View Details</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

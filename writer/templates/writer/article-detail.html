@@ -1,0 +1,26 @@
+{% extends 'writer/navbar.html' %}
+
+{% block content %}
+
+<div class="container bg-white shadow-md p-5 form-layout mt-4 rounded">
+
+    {% if article.image %}
+    <img src="{{ article.image.url }}" class="img-fluid rounded mb-3" alt="{{ article.title }}">
+    {% endif %}
+
+    <h3>{{ article.title }}</h3>
+    <p class="text-muted">{{ article.date_posted|date:"d M Y" }}</p>
+    <p><strong>Price:</strong> {{ article.price }} THB</p>
+    <p><strong>Location:</strong> {{ article.location }}</p>
+
+    <hr>
+    <p class="article-content-box text-break">
+    {{ article.content }}
+    </p>
+
+
+    <hr>
+    <a href="{% url 'my-articles' %}" class="btn btn-secondary">← Back to My Articles</a>
+</div>
+
+{% endblock %}

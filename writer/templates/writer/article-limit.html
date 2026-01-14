@@ -1,0 +1,9 @@
+{% extends 'writer/navbar.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+  <h3>⛔ จำกัดการสร้างบทความ</h3>
+  <p>คุณสามารถสร้างได้เพียง 1 บทความเท่านั้น</p>
+  <a href="{% url 'my-articles' %}" class="btn btn-primary">ดูบทความของฉัน</a>
+</div>
+{% endblock %}

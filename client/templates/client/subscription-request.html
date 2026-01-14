@@ -1,0 +1,53 @@
+{% extends 'client/navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>Choose a Subscription Plan</h3>
+    <p>Select your preferred subscription plan:</p>
+    
+    <div class="d-grid gap-3 mt-4">
+        <button type="button" class="btn btn-outline-primary btn-lg" id="30-day-btn">
+            💳 30 Days Subscription - ฿199
+        </button>
+        <button type="button" class="btn btn-outline-success btn-lg" id="90-day-btn">
+            💳 90 Days Subscription - ฿599
+        </button>
+    </div>
+
+    
+    <div class="mt-4">
+        <a href="{% url 'client-dashboard' %}">Return to dashboard</a>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+    
+    document.getElementById('30-day-btn').addEventListener('click', function() {
+        createCheckoutSession('30');
+    });
+    
+    document.getElementById('90-day-btn').addEventListener('click', function() {
+        createCheckoutSession('90');
+    });
+    
+    function createCheckoutSession(planId) {
+        fetch("{% url 'create-checkout-session' '0' %}".replace('0', planId), {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.sessionId) {
+                stripe.redirectToCheckout({ sessionId: data.sessionId });
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{% endblock %}

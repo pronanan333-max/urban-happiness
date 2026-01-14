@@ -1,0 +1,12 @@
+{% extends 'client/navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>🎉 Thank you for your donation!</h3>
+    <p>We truly appreciate your support.</p>
+    <a href="{% url 'client-dashboard' %}" class="btn btn-primary w-100 mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}

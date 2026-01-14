@@ -1,0 +1,35 @@
+{% extends 'client/navbar.html' %}
+{% block content %}
+
+<div class="container bg-white shadow-md p-5 form-layout mt-4 rounded">
+
+    {% if article.image %}
+        <img src="{{ article.image.url }}"
+             class="img-fluid rounded mb-3"
+             alt="{{ article.title }}">
+    {% endif %}
+
+    <h3>{{ article.title }}</h3>
+    <p class="text-muted">
+        {{ article.date_posted|date:"d M Y" }}
+    </p>
+
+    <p><strong>Price:</strong> {{ article.price }} THB</p>
+    <p><strong>Location:</strong> {{ article.location }}</p>
+
+    <hr>
+
+    <p class="text-break" style="white-space: pre-wrap;">
+        {{ article.content }}
+    </p>
+
+    <hr>
+
+    <a href="{% url 'client-dashboard' %}" class="btn btn-secondary">
+        ← Back to Articles
+    </a>
+
+</div>
+
+{% endblock %}
+

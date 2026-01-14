@@ -1,0 +1,10 @@
+{% extends 'client/navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>❌ Donation Cancelled</h3>
+    <p>You cancelled the donation process.</p>
+    <a href="{% url 'donation-request' %}" class="btn btn-outline-secondary w-100 mt-3">Try Again</a>
+</div>
+{% endblock %}

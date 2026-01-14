@@ -1,0 +1,61 @@
+{% extends 'client/navbar.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3> Subscription Management </h3>
+    <p> Manage your subscription: </p>
+    <a href="{% url 'subscription-request' %}" class="btn btn-primary w-100 mb-2">
+        Subscribe Now
+    </a>
+    <a href="{% url 'donation-request' %}" class="btn btn-outline-success w-100">
+        💖 Donate Now
+    </a>
+
+</div>
+
+<br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3> Account details </h3>
+    <p> You may update your account details below: </p>
+    <br>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{UpdateUserForm|crispy}}
+        <br>
+        <input class="btn btn-success w-100" type="submit" value="Update details"/>
+    </form>
+</div>
+
+<br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3> Account deletion </h3>
+    <hr>
+    <p> Proceed below to delete your account: </p>
+    <a href="{% url 'delete-account-2' %}"> Delete your account </a>
+</div>
+
+<br>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
