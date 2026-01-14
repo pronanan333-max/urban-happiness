@@ -84,13 +84,14 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    
 ]
 
 ROOT_URLCONF = 'subplatform.urls'
@@ -212,7 +213,7 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = 'pronanan333@gmail.com' # - GMAIL email address
-EMAIL_HOST_PASSWORD = 'ekyg hymi hocy ieaq' # - APP password
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD") # - APP password
 
 DEFAULT_FROM_EMAIL = 'pronanan333@gmail.com'  # - GMAIL email address
 
