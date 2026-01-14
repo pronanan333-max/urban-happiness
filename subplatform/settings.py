@@ -34,8 +34,14 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['urban-happiness-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://urban-happiness-production.up.railway.app']
+ALLOWED_HOSTS = [
+    "urban-happiness-production.up.railway.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://urban-happiness-production.up.railway.app",
+]
+
 
 #CSRF_TRUSTED_ORIGINS = []
 
