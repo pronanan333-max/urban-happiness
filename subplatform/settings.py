@@ -234,7 +234,10 @@ STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 SITE_URL = os.getenv("SITE_URL")
 
 # ดึง Price IDs แบบ dict
-STRIPE_PRICES = json.loads(os.getenv("STRIPE_PRICES"))
+
+STRIPE_PRICES = json.loads(
+    os.getenv("STRIPE_PRICES", "{}")
+)
 
 LOGIN_URL = '/my-login/'
 
